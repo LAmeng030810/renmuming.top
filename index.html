@@ -1,34 +1,34 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>renmuming.top</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>renmuming.top</title>
 
-		<script>
-			(function preventFouc() {
-				const STORAGE_KEY = 'rmm_app_theme';
-				const MEDIA_QUERY = '(prefers-color-scheme: dark)';
+    <script>
+      ;(function preventFouc() {
+        const STORAGE_KEY = 'rmm_app_theme'
+        const MEDIA_QUERY = '(prefers-color-scheme: dark)'
 
-				const savedTheme = localStorage.getItem(STORAGE_KEY);
-				const systemPrefersDark = window.matchMedia(MEDIA_QUERY).matches;
+        const savedTheme = localStorage.getItem(STORAGE_KEY)
+        const systemPrefersDark = window.matchMedia(MEDIA_QUERY).matches
 
-				const resolvedTheme =
-					savedTheme === 'system' || !savedTheme
-						? systemPrefersDark
-							? 'dark'
-							: 'light'
-						: savedTheme;
+        const resolvedTheme =
+          savedTheme === 'system' || !savedTheme
+            ? systemPrefersDark
+              ? 'dark'
+              : 'light'
+            : savedTheme
 
-				document.documentElement.setAttribute('data-theme', resolvedTheme);
-			})();
-		</script>
-	</head>
+        document.documentElement.setAttribute('data-theme', resolvedTheme)
+      })()
+    </script>
+  </head>
 
-	<body>
-		<div id="app"></div>
+  <body>
+    <div id="app"></div>
 
-		<script type="module" src="/src/main.ts"></script>
-	</body>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

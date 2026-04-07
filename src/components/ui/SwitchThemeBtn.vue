@@ -77,7 +77,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .theme-switcher {
   display: inline-flex;
   position: relative;
@@ -89,19 +89,19 @@ onMounted(() => {
   min-width: 9rem;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
 
-  &:hover {
-    background-color: color-mix(in srgb, var(--border) 70%, var(--primary));
-    box-shadow:
-      0 6px 20px rgba(0, 0, 0, 0.12),
-      0 2px 6px rgba(0, 123, 255, 0.08);
-    transform: translateY(-1px);
-  }
+.theme-switcher:hover {
+  background-color: color-mix(in srgb, var(--border) 70%, var(--primary));
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 123, 255, 0.08);
+  transform: translateY(-1px);
+}
 
-  &:active {
-    transform: translateY(0);
-    transition-duration: 0.1s;
-  }
+.theme-switcher:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
 }
 
 .slider-track {
@@ -136,14 +136,14 @@ onMounted(() => {
     0 1px 4px rgba(0, 0, 0, 0.15),
     inset 0 1px 2px rgba(255, 255, 255, 0.4),
     inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+}
 
-  &.light {
-    left: 0;
-  }
+.slider-thumb.light {
+  left: 0;
+}
 
-  &.dark {
-    left: calc(50% + 0.0625rem);
-  }
+.slider-thumb.dark {
+  left: calc(50% + 0.0625rem);
 }
 
 .btn {
@@ -162,20 +162,20 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  &:hover {
-    color: var(--primary);
-  }
+.btn:hover {
+  color: var(--primary);
+}
 
-  &.active {
-    color: white;
-    font-weight: 600;
-  }
+.btn.active {
+  color: white;
+  font-weight: 600;
+}
 
-  &:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
+.btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .theme-content {

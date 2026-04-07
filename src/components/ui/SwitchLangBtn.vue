@@ -33,7 +33,7 @@ const { switchLang } = useSwitchLang()
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .lang-switcher {
   display: inline-flex;
   position: relative;
@@ -45,19 +45,19 @@ const { switchLang } = useSwitchLang()
   min-width: 9rem;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
 
-  &:hover {
-    background-color: color-mix(in srgb, var(--border) 70%, var(--primary));
-    box-shadow:
-      0 6px 20px rgba(0, 0, 0, 0.12),
-      0 2px 6px rgba(0, 123, 255, 0.08);
-    transform: translateY(-1px);
-  }
+.lang-switcher:hover {
+  background-color: color-mix(in srgb, var(--border) 70%, var(--primary));
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 123, 255, 0.08);
+  transform: translateY(-1px);
+}
 
-  &:active {
-    transform: translateY(0);
-    transition-duration: 0.1s;
-  }
+.lang-switcher:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
 }
 
 .slider-track {
@@ -92,14 +92,14 @@ const { switchLang } = useSwitchLang()
     0 1px 4px rgba(0, 0, 0, 0.15),
     inset 0 1px 2px rgba(255, 255, 255, 0.4),
     inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+}
 
-  &.zh_CN {
-    left: 0;
-  }
+.slider-thumb.zh_CN {
+  left: 0;
+}
 
-  &.en {
-    left: calc(50% + 0.0625rem);
-  }
+.slider-thumb.en {
+  left: calc(50% + 0.0625rem);
 }
 
 .lang-btn {
@@ -118,20 +118,20 @@ const { switchLang } = useSwitchLang()
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  &:hover {
-    color: var(--primary);
-  }
+.lang-btn:hover {
+  color: var(--primary);
+}
 
-  &.active {
-    color: white;
-    font-weight: 600;
-  }
+.lang-btn.active {
+  color: white;
+  font-weight: 600;
+}
 
-  &:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
+.lang-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .lang-content {

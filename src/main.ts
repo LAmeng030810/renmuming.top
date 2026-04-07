@@ -3,8 +3,8 @@ import { createApp } from 'vue'
 import router from '@/router'
 import App from './App.vue'
 import i18n from './i18n'
-import '@/assets/styles/global.scss'
-import '@/assets/styles/theme.scss'
+import '@/assets/styles/global.css'
+import '@/assets/styles/theme.css'
 
 const pinia = createPinia()
 const app = createApp(App)

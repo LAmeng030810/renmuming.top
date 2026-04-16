@@ -5,8 +5,8 @@ import { useTheme } from '@/composables/useTheme'
 const { theme, setTheme } = useTheme()
 
 const themes = [
-  { key: 'light' as const, icon: '☀️', label: 'theme.light' },
-  { key: 'dark' as const, icon: '🌙', label: 'theme.dark' },
+  { key: 'light' as const, icon: '/public/svg/light.svg' },
+  { key: 'dark' as const, icon: '/public/svg/dark.svg' },
 ]
 
 const appliedTheme = ref<'light' | 'dark'>('light')
@@ -69,10 +69,7 @@ onMounted(() => {
       :class="[{ active: appliedTheme === t.key }]"
       @click="setTheme(t.key)"
     >
-      <span class="theme-content">
-        <span class="icon">{{ t.icon }}</span>
-        <span class="label">{{ $t(t.label) }}</span>
-      </span>
+      <img :src="t.icon" class="icon" alt="svg">
     </button>
   </div>
 </template>
@@ -83,20 +80,9 @@ onMounted(() => {
   position: relative;
   gap: 0.125rem;
   padding: 0.375rem;
-  background-color: var(--border);
-  border-radius: 2.5rem;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 9rem;
+  transition: all 0.35s;
   transform: translateZ(0);
   backface-visibility: hidden;
-}
-
-.theme-switcher:hover {
-  background-color: color-mix(in srgb, var(--border) 70%, var(--primary));
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.12),
-    0 2px 6px rgba(0, 123, 255, 0.08);
-  transform: translateY(-1px);
 }
 
 .theme-switcher:active {
@@ -113,8 +99,12 @@ onMounted(() => {
   border-radius: 2rem;
   overflow: hidden;
   pointer-events: none;
-  background: color-mix(in srgb, var(--border) 90%, transparent);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: color-mix(in srgb, var(--bg-c) 90%, transparent);
+  border: 2px solid var(--bg-c-b);
+}
+
+.slider-track:hover{
+  border: 2px solid #8e8e8e;
 }
 
 .slider-thumb {
@@ -123,19 +113,9 @@ onMounted(() => {
   left: 0;
   width: calc(50% - 0.0625rem);
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--primary) 90%, white) 0%,
-    var(--primary) 50%,
-    color-mix(in srgb, var(--primary) 90%, #1a6bc2) 100%
-  );
+  background: var(--bg);
   border-radius: 2rem;
-  transition: left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1.2);
-  box-shadow:
-    0 3px 15px rgba(0, 123, 255, 0.3),
-    0 1px 4px rgba(0, 0, 0, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4),
-    inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+  transition: left 0.45s;
 }
 
 .slider-thumb.light {
@@ -156,7 +136,7 @@ onMounted(() => {
   color: color-mix(in srgb, var(--text) 80%, transparent);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s;
   outline: none;
   flex: 1;
   display: flex;
@@ -164,54 +144,21 @@ onMounted(() => {
   justify-content: center;
 }
 
-.btn:hover {
-  color: var(--primary);
-}
-
-.btn.active {
-  color: white;
-  font-weight: 600;
-}
-
 .btn:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-.theme-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.375rem;
-}
-
 .icon {
-  font-size: 1rem;
-  line-height: 1;
+  width: 15px;
+  height: 15px;
+  color: #fff;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
   transition: transform 0.2s ease;
-}
-
-.label {
-  font-size: 0.8125rem;
-  white-space: nowrap;
-  transition: transform 0.2s ease;
-}
-
-.btn:hover .icon {
-  transform: scale(1.1);
-}
-
-.btn:hover .label {
-  transform: translateY(-0.5px);
 }
 
 .btn.active .icon {
   filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.3));
   transform: scale(1.05);
-}
-
-.btn.active .label {
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 </style>

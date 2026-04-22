@@ -1,30 +1,28 @@
 <script setup lang="ts">
+import type { Theme } from '@/composables/useTheme'
 import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
 import { useTheme } from '@/composables/useTheme'
 
 const { theme, setTheme } = useTheme()
 
 const themes = [
-  { key: 'light' as const, icon: '/public/svg/light.svg' },
-  { key: 'dark' as const, icon: '/public/svg/dark.svg' },
+  { key: 'light' as const, icon: '/svg/light.svg' },
+  { key: 'dark' as const, icon: '/svg/dark.svg' },
 ]
 
-const appliedTheme = ref<'light' | 'dark'>('light')
+const appliedTheme = ref<Theme>('light')
 
 // 更新应用主题的函数
 function updateAppliedTheme() {
-  if (typeof document === 'undefined') {
+  if (typeof document === 'undefined')
     return
-  }
 
   if (theme.value === 'system') {
-    const current = document.documentElement.getAttribute('data-theme') as
-      | 'light'
-      | 'dark'
+    const current = document.documentElement.getAttribute('data-theme') as Theme
     appliedTheme.value = current || 'light'
   }
   else {
-    appliedTheme.value = theme.value as 'light' | 'dark'
+    appliedTheme.value = theme.value as Theme
   }
 }
 
@@ -103,7 +101,7 @@ onMounted(() => {
   border: 2px solid var(--bg-c-b);
 }
 
-.slider-track:hover{
+.slider-track:hover {
   border: 2px solid #8e8e8e;
 }
 

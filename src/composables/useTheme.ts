@@ -1,6 +1,6 @@
 import { onMounted, ref } from 'vue'
 
-type Theme = 'light' | 'dark' | 'system'
+export type Theme = 'light' | 'dark' | 'system'
 
 const STORAGE_KEY = 'rmm_app_theme'
 const MEDIA_QUERY = '(prefers-color-scheme: dark)'
